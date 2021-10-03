@@ -2,7 +2,6 @@
 
 const inquirer = require("inquirer");
 const fs = require("fs-extra");
-const glob = require("glob");
 const path = require("path");
 const latestVersion = require('latest-version');
 const currentLocalVersion = require('../package.json');
@@ -31,7 +30,7 @@ inquirer
       name: "styleguide_path",
       type: "input",
       message:
-        "Where would you like to add the scss directory (Press enter for root)",
+        "Where would you like to add the style guide (Press enter for root)",
       default: ".",
     },
     {

@@ -1,10 +1,10 @@
 {
   "name": "uisg-cli",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A new CLI to easily create style guide 🧰",
   "main": "src/index.js",
   "bin": {
-    "cs-cli": "src/index.js"
+    "uisg": "src/index.js"
   },
   "author": "Maxime Daraize <hello@maximedaraize.com>",
   "homepage": "https://www.uistyleguide.com",

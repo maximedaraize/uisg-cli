@@ -56,11 +56,11 @@ inquirer
         if (answer.styleguide_template == "html") {
           srcDir = path.join(__dirname, "html");
         } else if (answer.styleguide_template == "react") {
-          srcDir = path.join(__dirname, "html");
+          srcDir = path.join(__dirname, "react");
         } else if (answer.styleguide_template == "vue") {
-          srcDir = path.join(__dirname, "html");
+          srcDir = path.join(__dirname, "vue");
         } else if (answer.styleguide_template == "svelte") {
-          srcDir = path.join(__dirname, "html");
+          srcDir = path.join(__dirname, "svelte");
         }
         console.log(
           "\x1b[37m",

@@ -1,6 +1,6 @@
 {
   "name": "uisg-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A new CLI to easily create style guide 🧰",
   "main": "src/index.js",
   "bin": {

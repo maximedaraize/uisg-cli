@@ -37,7 +37,7 @@ inquirer
       name: "styleguide_template",
       type: "list",
       message: "Which template would you like to install",
-      choices: ["html", "vue", "react", "svelte"],
+      choices: ["html", `${chalk.hex('#3FB27F')("vue")}`, `${chalk.hex('#5ED3F3')("react")}`, `${chalk.hex('#F83D00')("svelte")}`]
     },
   ])
   .then((answer) => {
@@ -52,6 +52,7 @@ inquirer
       } else if (answer.styleguide_template == "svelte") {
         srcDir = path.join(__dirname, "svelte");
       }
+      console.log(srcDir)
       const destDir = answer.styleguide_path;
       try {
         await fs.copySync(srcDir, destDir, {

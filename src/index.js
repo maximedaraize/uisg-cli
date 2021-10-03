@@ -42,7 +42,16 @@ inquirer
   ])
   .then((answer) => {
     async function copyFiles() {
-      let srcDir = path.join(__dirname, "html");
+      let srcDir;
+      if (answer.styleguide_template == "html") {
+        srcDir = path.join(__dirname, "html");
+      } else if (answer.styleguide_template == "react") {
+        srcDir = path.join(__dirname, "react");
+      } else if (answer.styleguide_template == "vue") {
+        srcDir = path.join(__dirname, "vue");
+      } else if (answer.styleguide_template == "svelte") {
+        srcDir = path.join(__dirname, "svelte");
+      }
       const destDir = answer.styleguide_path;
       try {
         await fs.copySync(srcDir, destDir, {
@@ -53,15 +62,7 @@ inquirer
           "\x1b[32m",
           "\n ✨ Done. New style guide created.",
         ); 
-        if (answer.styleguide_template == "html") {
-          srcDir = path.join(__dirname, "html");
-        } else if (answer.styleguide_template == "react") {
-          srcDir = path.join(__dirname, "react");
-        } else if (answer.styleguide_template == "vue") {
-          srcDir = path.join(__dirname, "vue");
-        } else if (answer.styleguide_template == "svelte") {
-          srcDir = path.join(__dirname, "svelte");
-        }
+        
         console.log(
           "\x1b[37m",
           `\n 🌎 Website:`,

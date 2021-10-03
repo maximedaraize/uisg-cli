@@ -52,7 +52,7 @@ inquirer
         });
         console.log(
           "\x1b[32m",
-          "\n ✨ Done. New scss directory created.",
+          "\n ✨ Done. New style guide created.",
         ); 
         if (answer.styleguide_template == "html") {
           srcDir = path.join(__dirname, "html");

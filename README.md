@@ -85,4 +85,4 @@ Show your support by giving a ⭐️ on [Github](https://github.com/maximedaraiz
 
 [Github](https://github.com/maximedaraize/) <br>
 [Npm](https://www.npmjs.com/package/uisg-cli) <br>
-[Email](<(mailto:hello@maximedaraize?subject=[GitHub]%UISG)>)
+[Email](mailto:hello@maximedaraize.com)

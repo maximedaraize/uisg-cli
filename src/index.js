@@ -37,7 +37,7 @@ inquirer
       name: "styleguide_template",
       type: "list",
       message: "Which template would you like to install",
-      choices: ["html", `${chalk.hex('#3FB27F')("vue")}`, `${chalk.hex('#5ED3F3')("react")}`, `${chalk.hex('#F83D00')("svelte")}`]
+      choices: [`${chalk.yellow("html")``, `${chalk.hex('#3FB27F')("vue")}`, `${chalk.hex('#5ED3F3')("react")}`, `${chalk.hex('#F83D00')("svelte")}`]
     },
   ])
   .then((answer) => {

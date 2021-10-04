@@ -58,12 +58,12 @@
   const spacing = [
     "small",
     "base",
-    "level1",
-    "level2",
-    "level3",
-    "level4",
-    "level5",
-    "level6",
+    "space1",
+    "space2",
+    "space3",
+    "space4",
+    "space5",
+    "space6",
   ];
   const feedbacks = ["success", "warning", "danger", "info"];
   const icons = [

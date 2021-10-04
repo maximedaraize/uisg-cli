@@ -26,25 +26,9 @@
     let p;
     colors.forEach((item) => {
       p = document.createElement("p");
-      let rgbValue = window.getComputedStyle(item)["background-color"];
-      if (
-        rgbValue === null ||
-        rgbValue === undefined ||
-        rgbValue === "rgba(0, 0, 0, 0)"
-      ) {
-        rgbValue = "rgb(255,255,255)";
-      }
-      let hexFunction = (rgbValue) =>
-        `#${rgbValue
-          .match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/)
-          .slice(1)
-          .map((n) => parseInt(n, 10).toString(16).padStart(2, "0"))
-          .join("")}`;
-      item.appendChild(p);
       p.innerHTML = `
-              $${item.className} <br>
-              <span>${rgbValue}<span> <br>
-              <span>${hexFunction(rgbValue)}</span>`;
+        $${item.className}
+      `;
     });
     //load css after dom element are generated
     loaded = await true;
@@ -74,12 +58,12 @@
   const spacing = [
     "small",
     "base",
-    "level1",
-    "level2",
-    "level3",
-    "level4",
-    "level5",
-    "level6",
+    "space1",
+    "space2",
+    "space3",
+    "space4",
+    "space5",
+    "space6",
   ];
   const feedbacks = ["success", "warning", "danger", "info"];
   const icons = [

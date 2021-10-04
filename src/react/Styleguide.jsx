@@ -1,183 +1,224 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UI STYLE GUIDE VANILLA</title>
-    <style>
-      #uisg {
-        font-family: Helvetica, Arial, sans-serif;
-        max-width: 1280px;
-        margin: 32px auto 0 0;
-        display: grid;
-        grid-template-columns: 240px 1fr;
-        grid-template-rows: auto;
-        grid-template-areas:
-          "sidebar main"
-          "sidebar main";
+import React from "react";
+import ReactDOM from "react-dom";
+
+document.addEventListener("DOMContentLoaded", () => {
+  //Generate a dynamic navigation base on all sections of the style guide
+  const navigation = document.getElementById("navigation");
+  const sections = Array.from(document.querySelectorAll("section"));
+
+  let li;
+  sections.forEach((item) => {
+    li = document.createElement("li");
+    li.style.cssText = `
+       font-size: 1.25rem;
+       padding: 4px 0;
+    `;
+    li.innerHTML = `<a href="#${item.id}" style="color: #1f1f1f; text-decoration: none; text-transform: capitalize;">${item.id}</a>`;
+    navigation.appendChild(li);
+    li.addEventListener("mouseover", function (event) {
+      event.target.style.textDecoration = "underline";
+    });
+    li.addEventListener("mouseout", function (event) {
+      event.target.style.textDecoration = "none";
+    });
+  });
+    
+
+  //Generate dynamic title for all sections of the style guide
+  let h2;
+  sections.forEach((item) => {
+    h2 = document.createElement("h2");
+    h2.classList.add("uisg-title");
+    h2.style.cssText = `
+       width: 100%;
+       text-transform: uppercase;
+       font-size: 24px;
+       padding: 24px 0 0 0;
+       margin: 0 0 24px 0;
+       line-height: 1;
+       width: 100%;
+       display: block;
+    `;
+    h2.innerHTML = `${item.id}`;
+    item.prepend(h2);
+  });
+
+  // Get RGB/HEX color value
+    const colors = Array.from(document.querySelectorAll("#colors > div"));
+    let p;
+    colors.forEach((item) => {
+      p = document.createElement("p");
+      p.style.cssText = `
+       background: #ffffff;
+       margin: auto 0 0;
+       padding: 8px;
+       line-height: 1.3;
+    `;
+      let rgbValue = window.getComputedStyle(item)["background-color"];
+      if (
+        rgbValue === null ||
+        rgbValue === undefined ||
+        rgbValue === "rgba(0, 0, 0, 0)"
+      ) {
+        rgbValue = "rgb(255,255,255)";
       }
-      
-      #main {
-        grid-area: main;
-        padding: 0 24px;
-      }
-      
-      #main > section {
-        margin-bottom: 64px;
-      }
-      
-      #main section > h2.uisg-title {
-        width: 100%;
-        text-transform: uppercase;
-        font-size: 24px;
-        padding: 24px 0 0 0;
-        margin: 0 0 24px 0;
-        line-height: 1;
-        width: 100%;
-        display: block;
-      }
-      
-      #sidebar {
-        position: fixed;
-        grid-area: sidebar;
-        padding: 0 24px;
-      }
-      
-      #sidebar ul {
-        list-style: none;
-        padding-left: 0;
-      }
-      
-      #sidebar ul li {
-        font-size: 1.25rem;
-        padding: 4px 0;
-      }
-      
-      #sidebar a {
-        color: #1f1f1f;
-        text-decoration: none;
-        text-transform: capitalize;
-      }
-      
-      #sidebar a:hover {
-        text-decoration: underline;
-      }
-      
-      /*Colors*/
-      #colors {
-        display: flex;
-        flex-wrap: wrap;
-      }
-      
-      #colors > div {
-        display: flex;
-        flex-direction: column;
-        border: 1px solid #1f1f1f;
-        height: 240px;
-        width: 200px;
-        margin: 16px;
-      }
-      
-      #colors > div > p {
-        background: #ffffff;
-        margin: auto 0 0;
-        padding: 8px;
-        line-height: 1.3;
-      }
-      
-      #colors > div > p > span {
-        text-transform: uppercase;
-      }
-      
-      /*Typography*/
-      #typography h1,
-      #typography h2,
-      #typography h3,
-      #typography h4,
-      #typography h5,
-      #typography h6 {
-        position: relative;
-      }
-      
-      #typography div {
-        border-bottom: 1px dotted;
-      }
-      
-      #buttons > div {
-        margin-bottom: 32px;
-      }
-      
-      #spacings p {
-        margin: 0 0 4px 0;
-        line-height: 1;
-      }
-      
-      #spacings .space {
-        height: 16px;
-        border: 1px solid black;
-        margin: 0 0 24px 0;
-      }
-      
-      #table table,
-      #table th,
-      #table td {
-        border: 1px solid black;
-      }
-      
-      #table table {
-        width: 100%;
-      }
-      
-      #images {
-        display: flex;
-        flex-wrap: wrap;
-      }
-      
-      #images > div {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 16px;
-      }
-      
-    </style>
-    <link rel="stylesheet" href="./style.css">
-  </head>
-  <body>
-    <div id="uisg">
-      <div id="main">
-        <h1>UI STYLE GUIDE VANILLA</h1>
-        <section id="colors">
-          <div class="color--primary">
-          </div>
-          <div class="color--secondary">
-          </div>
-          <div class="color--accent">
-          </div>
-          <div class="color--heading">
-          </div>
-          <div class="color--text">
-          </div>
-          <div class="color--background">
-          </div>
-          <div class="color--success">
-          </div>
-          <div class="color--warning">
-          </div>
-          <div class="color--danger">
-          </div>
-          <div class="color--info">
-          </div>
+      let hexFunction = (rgbValue) =>
+        `#${rgbValue
+          .match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/)
+          .slice(1)
+          .map((n) => parseInt(n, 10).toString(16).padStart(2, "0"))
+          .join("")}`;
+      item.appendChild(p);
+      p.innerHTML = `
+              $${item.className} <br>
+              <span style="text-transform: uppercase;">${rgbValue}<span> <br>
+              <span style="text-transform: uppercase;">${hexFunction(rgbValue)}</span>`;
+    });
+   });
+
+
+const colors = [
+  "primary",
+  "secondary",
+  "accent",
+  "heading",
+  "text",
+  "background",
+  "success",
+  "warning",
+  "danger",
+  "info",
+];
+const buttons = [
+  "primary",
+  "secondary",
+  "accent",
+  "success",
+  "warning",
+  "danger",
+  "info",
+];
+const spacing = [
+  "small",
+  "base",
+  "level1",
+  "level2",
+  "level3",
+  "level4",
+  "level5",
+  "level6",
+];
+const feedbacks = ["success", "warning", "danger", "info"];
+const icons = [
+  {
+    label: "bell",
+    path1:
+      "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9",
+  },
+  {
+    label: "paper clip",
+    path1:
+      "M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13",
+  },
+  {
+    label: "external link",
+    path1:
+      "M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14",
+  },
+  {
+    label: "clipboard",
+    path1:
+      "M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2",
+  },
+  {
+    label: "cog",
+    path1:
+      "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z",
+    path2: "M15 12a3 3 0 11-6 0 3 3 0 016 0z",
+  },
+  {
+    label: "chat",
+    path1:
+      "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z",
+  },
+];
+
+const uisg = {
+  fontFamily: "Helvetica, Arial, sans-serif",
+  maxWidth: "1280px",
+  margin: "32px auto 0 0",
+  display: "grid",
+  gridTemplateColumns: "240px 1fr",
+  gridTemplateRows: "auto",
+  gridTemplateAreas: `
+        "sidebar main"
+        "sidebar main"`,
+};
+const main = {
+  gridArea: "main",
+  padding: "0 24px",
+};
+const section = {
+  marginBottom: "64px",
+};
+const sidebar = {
+  position: "fixed",
+  gridArea: "sidebar",
+  padding: "0 24px",
+};
+const colorsContainer = {
+  display: "flex",
+  flexWrap: "wrap",
+};
+const colorDiv = {
+  display: "flex",
+  flexDirection: "column",
+  border: "1px solid #1f1f1f",
+  height: "240px",
+  width: "200px",
+  margin: "16px",
+};
+ReactDOM.render(
+  <React.StrictMode>
+    <div id="uisg" style={uisg}>
+      <div id="main" style={main}>
+        <h1>UI STYLE GUIDE SVELTE</h1>
+        <section id="colors" style={(section, colorsContainer)}>
+          {colors.map((color) => {
+            return (
+              <div
+                key={color}
+                className={`color color--${color}`}
+                style={colorDiv}
+              >
+                {color}
+              </div>
+            );
+          })}
         </section>
-        <section id="typography">
-          <div><h1>A level 1 heading</h1></div>
-          <div><h2>A level 2 heading</h2></div>
-          <div><h3>A level 3 heading</h3></div>
-          <div><h4>A level 4 heading</h4></div>
-          <div><h5>A level 5 heading</h5></div>
-          <div><h6>A level 6 heading</h6></div>
-          <div><p>A paragraph</p></div>
-          <div>
+        <section id="typography" style={section}>
+          <div style={{ borderBottom: "1px dotted" }}>
+            <h1>A level 1 heading</h1>
+          </div>
+          <div style={{ borderBottom: "1px dotted" }}>
+            <h2>A level 2 heading</h2>
+          </div>
+          <div style={{ borderBottom: "1px dotted" }}>
+            <h3>A level 3 heading</h3>
+          </div>
+          <div style={{ borderBottom: "1px dotted" }}>
+            <h4>A level 4 heading</h4>
+          </div>
+          <div style={{ borderBottom: "1px dotted" }}>
+            <h5>A level 5 heading</h5>
+          </div>
+          <div style={{ borderBottom: "1px dotted" }}>
+            <h6>A level 6 heading</h6>
+          </div>
+          <div style={{ borderBottom: "1px dotted" }}>
+            <p>A paragraph</p>
+          </div>
+          <div style={{ borderBottom: "1px dotted" }}>
             <ul>
               <li>unordered list item</li>
               <li>unordered list item</li>
@@ -190,161 +231,167 @@
             </ol>
           </div>
         </section>
-        <section id="buttons">
-            <div>
-              <button class="button button--primary">button primary</button>
-            </div>
-            <div>
-              <button class="button button--secondary">button secondary</button>
-            </div>
-            <div>
-              <button class="button button--accent">button accent</button>
-            </div>
-            <div>
-              <button class="button button--success">button success</button>
-            </div>
-            <div>
-              <button class="button button--warning">button warning</button>
-            </div>
-            <div>
-              <button class="button button--danger">button danger</button>
-            </div>
-            <div>
-              <button class="button button--info">button info</button>
-            </div>
-        </section>
-        <section id="spacings">
+        <section id="buttons" style={section}>
           <div>
-            <p>space small</p>
-            <div class="space space--small"></div>
-            <p>space base</p>
-            <div class="space space--base"></div>
-            <p>space level 1</p>
-            <div class="space space--level1"></div>
-            <p>space level 2</p>
-            <div class="space space--level2"></div>
-            <p>space level 3</p>
-            <div class="space space--level3"></div>
-            <p>space level 4</p>
-            <div class="space space--level4"></div>
-            <p>space level 5</p>
-            <div class="space space--level5"></div>
-            <p>space level 6</p>
-            <div class="space space--level6"></div>
+            {buttons.map((button) => {
+              return (
+                <div>
+                  <button
+                    key={button}
+                    className={`button button--${button}`}
+                    style={{ marginBottom: "32px" }}
+                  >
+                    {button}
+                  </button>
+                </div>
+              );
+            })}
           </div>
         </section>
-        <section id="feedback">
-          <div class="toast">
+        <section id="spacings" style={section}>
+          <div>
+            {spacing.map((space) => {
+              return (
+                <div>
+                  <p style={{ margin: "0 0 4px 0", lineHeight: "1" }}>
+                    space {space}
+                  </p>
+                  <div
+                    key={space}
+                    className={`space space--${space}`}
+                    style={{
+                      height: "16px",
+                      border: "1px solid black",
+                      margin: "0 0 24px 0",
+                    }}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </section>
+        <section id="feedback" style={section}>
+          <div className="toast">
             <h3>Toast</h3>
-            <div class="toast toast--success">success</div>
-            <div class="toast toast--warning">warning</div>
-            <div class="toast toast--danger">danger</div>
-            <div class="toast toast--info">info</div>
+            {feedbacks.map((feedback) => {
+              return (
+                <div key={feedback} className={`toast toast--${feedback}`}>
+                  {feedback}
+                </div>
+              );
+            })}
           </div>
-          <div class="notification">
+          <div className="notification">
             <h3>notification</h3>
-            <div class="notifications notifications--success">success</div>
-            <div class="notifications notifications--warning">warning</div>
-            <div class="notifications notifications--danger">danger</div>
-            <div class="notifications notifications--info">info</div>
+            {feedbacks.map((feedback) => {
+              return (
+                <div
+                  key={feedback}
+                  className={`notification notification--${feedback}`}
+                >
+                  {feedback}
+                </div>
+              );
+            })}
           </div>
-          <div class="badges">
+          <div className="badges">
             <h3>badges</h3>
-            <div class="badges badges--success">success</div>
-            <div class="badges badges--warning">warning</div>
-            <div class="badges badges--danger">danger</div>
-            <div class="badges badges--info">info</div>
-          </div>
-          <div class="tooltip">
-            <h3>tooltip</h3>
-            <div class="tooltip tooltip--top">success</div>
-            <div class="tooltip tooltip--right">warning</div>
-            <div class="tooltip tooltip--bottom">danger</div>
-            <div class="tooltip tooltip--left">info</div>
+            {feedbacks.map((feedback) => {
+              return (
+                <div key={feedback} className={`badges badges--${feedback}`}>
+                  {feedback}
+                </div>
+              );
+            })}
           </div>
         </section>
-        <section id="table">
+        <section id="table" style={section}>
           <div>
-            <table>
+            <table style={{ border: "1px solid black", width: "100%" }}>
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Age</th>
-                  <th>Job</th>
+                  <th style={{ border: "1px solid black" }}>Name</th>
+                  <th style={{ border: "1px solid black" }}>Age</th>
+                  <th style={{ border: "1px solid black" }}>Job</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td data-label="Name">James</td>
-                  <td data-label="Age">24</td>
-                  <td data-label="Job">Engineer</td>
+                  <td data-label="Name" style={{ border: "1px solid black" }}>
+                    James
+                  </td>
+                  <td data-label="Age" style={{ border: "1px solid black" }}>
+                    24
+                  </td>
+                  <td data-label="Job" style={{ border: "1px solid black" }}>
+                    Engineer
+                  </td>
                 </tr>
                 <tr>
-                  <td data-label="Name">Jill</td>
-                  <td data-label="Age">26</td>
-                  <td data-label="Job">Engineer</td>
+                  <td data-label="Name" style={{ border: "1px solid black" }}>
+                    Jill
+                  </td>
+                  <td data-label="Age" style={{ border: "1px solid black" }}>
+                    26
+                  </td>
+                  <td data-label="Job" style={{ border: "1px solid black" }}>
+                    Engineer
+                  </td>
                 </tr>
                 <tr>
-                  <td data-label="Name">Elyse</td>
-                  <td data-label="Age">24</td>
-                  <td data-label="Job">Designer</td>
+                  <td data-label="Name" style={{ border: "1px solid black" }}>
+                    Elyse
+                  </td>
+                  <td data-label="Age" style={{ border: "1px solid black" }}>
+                    24
+                  </td>
+                  <td data-label="Job" style={{ border: "1px solid black" }}>
+                    Designer
+                  </td>
                 </tr>
               </tbody>
             </table>
           </div>
         </section>
-        <section id="images">
-          <div>
-            <img width="280xpx" height="280xpx" src="https://source.unsplash.com/1600x900/?nature,forest" alt="">
-          </div>
-          <div>
-            <img width="280xpx" height="280xpx" src="https://source.unsplash.com/1600x900/?nature,water" alt="">
-          </div>
-          <div>
-            <img width="280xpx" height="280xpx" src="https://source.unsplash.com/1600x900/?nature,mountain" alt="">
+        <section id="icons" style={section}>
+          <div style={{display: "flex", flexWrap: "wrap"}}>
+            {icons.map((icon) => {
+              return (
+                <div key={icon.label} className={`icon icon--${icon.label}`} style={{margin: "16px"}}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    width="24px"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d={`${icon.path1}`}
+                    />
+                    <path
+                      v-if="icon.path2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d={`${icon.path2}`}
+                    />
+                  </svg>
+                </div>
+              );
+            })}
           </div>
         </section>
       </div>
 
-      <div id="sidebar">
-      <h2>Navigation</h2>
-      <ul id="navigation"></ul>
+      <div id="sidebar" style={sidebar}>
+        <h2>Navigation</h2>
+        <ul id="navigation" style={{listStyle:"none", paddingLeft: "0"}}/>
       </div>
     </div>
-    <script defer src="/main.js"></script>
-    <script>
-      //Generate a dynamic navigation base on all sections of the style guide
-      const navigation = document.getElementById('navigation');
-      const sections = Array.from(document.querySelectorAll('section'));
-      sections.forEach((item) => {
-          li = document.createElement("li");
-          li.innerHTML = `<a href="#${item.id}">${item.id}</a>`
-          navigation.appendChild(li)
-      });
+  </React.StrictMode>,
+  document.getElementById("root")
+);
 
-      //Generate dynamic title for all sections of the style guide
-        sections.forEach((item) => {
-          h2 = document.createElement("h2");
-          h2.classList.add('uisg-title')
-          h2.innerHTML = `${item.id}`
-          item.prepend(h2)
-        });
-
-        // Get color value
-        const colors = Array.from(document.querySelectorAll('#colors > div'));
-        colors.forEach((item) => {
-          p = document.createElement("p");
-          let rgbValue = window.getComputedStyle(item)["background-color"];
-          if(rgbValue === null || rgbValue === undefined || rgbValue === 'rgba(0, 0, 0, 0)') {
-            rgbValue = 'rgb(255,255,255)'
-          }
-          let hexFunction = (rgbValue) => `#${rgbValue.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/).slice(1).map(n => parseInt(n, 10).toString(16).padStart(2, '0')).join('')}`
-          item.appendChild(p);
-              p.innerHTML = `
-              $${item.className} <br> 
-              <span>${rgbValue}<span> <br>
-              <span>${hexFunction(rgbValue)}</span>`;
-          });       
-    </script>
-  </body>
-</html>

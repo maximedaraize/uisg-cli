@@ -57,13 +57,19 @@ function questions() {
     .then((answer) => {
       async function copyFiles() {
         let srcDir;
-        if (answer.styleguide_template == "html") {
+        if (answer.styleguide_template == `${chalk.hex("#EFD81E")("html")}`) {
           srcDir = path.join(__dirname, "html");
-        } else if (answer.styleguide_template == "react") {
+        } else if (
+          answer.styleguide_template == `${chalk.hex("#3FB27F")("vue")}`
+        ) {
           srcDir = path.join(__dirname, "react");
-        } else if (answer.styleguide_template == "vue") {
+        } else if (
+          answer.styleguide_template == `${chalk.hex("#5ED3F3")("react")}`
+        ) {
           srcDir = path.join(__dirname, "vue");
-        } else if (answer.styleguide_template == "svelte") {
+        } else if (
+          answer.styleguide_template == `${chalk.hex("#F83D00")("svelte")}`
+        ) {
           srcDir = path.join(__dirname, "svelte");
         }
         console.log(srcDir);

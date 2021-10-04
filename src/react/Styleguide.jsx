@@ -54,25 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
        padding: 8px;
        line-height: 1.3;
     `;
-      let rgbValue = window.getComputedStyle(item)["background-color"];
-      if (
-        rgbValue === null ||
-        rgbValue === undefined ||
-        rgbValue === "rgba(0, 0, 0, 0)"
-      ) {
-        rgbValue = "rgb(255,255,255)";
-      }
-      let hexFunction = (rgbValue) =>
-        `#${rgbValue
-          .match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/)
-          .slice(1)
-          .map((n) => parseInt(n, 10).toString(16).padStart(2, "0"))
-          .join("")}`;
-      item.appendChild(p);
+
       p.innerHTML = `
-              $${item.className} <br>
-              <span style="text-transform: uppercase;">${rgbValue}<span> <br>
-              <span style="text-transform: uppercase;">${hexFunction(rgbValue)}</span>`;
+        $${item.className}
+      `;
     });
    });
 
@@ -182,7 +167,7 @@ ReactDOM.render(
   <React.StrictMode>
     <div id="uisg" style={uisg}>
       <div id="main" style={main}>
-        <h1>UI STYLE GUIDE SVELTE</h1>
+        <h1>UI STYLE GUIDE REACT</h1>
         <section id="colors" style={(section, colorsContainer)}>
           {colors.map((color) => {
             return (

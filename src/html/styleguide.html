@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -128,14 +129,16 @@
       width: 100%;
     }
 
-    #images {
+    #form>div {
+      margin-bottom: 32px;
+    }
+
+    #icons {
       display: flex;
       flex-wrap: wrap;
     }
 
-    #images>div {
-      display: flex;
-      flex-wrap: wrap;
+    #icons>div {
       margin: 16px;
     }
   </style>
@@ -305,6 +308,36 @@
           </table>
         </div>
       </section>
+      <section id="form">
+        <div>
+          <label for="">Input Text</label> <br>
+          <input type="text" name="" id="">
+        </div>
+        <div>
+          <label for="">Radio Button</label> <br>
+          <input type="radio" name="choice1" id="">
+          <input type="radio" name="choice1" id="">
+        </div>
+        <div>
+          <label for="">Checkbox</label> <br>
+          <input type="checkbox" name="A" id="">
+          <input type="checkbox" name="B" id="">
+          <input type="checkbox" name="C" id="">
+        </div>
+        <div>
+          <label for="">Select</label> <br>
+          <select name="City" id="">
+            <option value="Milan">Milan</option>
+            <option value="Paris" selected>Paris</option>
+            <option value="New York">New York</option>
+            <option value="London">London</option>
+          </select>
+        </div>
+        <div>
+          <label for="">Text area</label> <br>
+          <textarea name="" id="" cols="30" rows="10"></textarea>
+        </div>
+      </section>
       <section id="icons">
 
       </section>
@@ -315,7 +348,6 @@
       <ul id="navigation"></ul>
     </div>
   </div>
-  <script defer src="/main.js"></script>
   <script>
     //Generate a dynamic navigation base on all sections of the style guide
     const navigation = document.getElementById('navigation');
@@ -382,8 +414,6 @@
       console.log(item.label)
       div = document.createElement("div");
       if (item.path2) {
-
-
         div.innerHTML = ` <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -428,4 +458,5 @@
     })
   </script>
 </body>
+
 </html>

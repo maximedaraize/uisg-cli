@@ -90,6 +90,42 @@
       text-transform: uppercase;
     }
 
+    #shadows {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    #shadows h2 {
+      width: 100%;
+    }
+
+    #shadows > div {
+      height: 200px;
+      width: 200px;
+      margin: 32px;
+      border: 1px solid grey;
+    }
+
+    #shadows .shadow--1 {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+
+    #shadows .shadow--2 {
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    }
+
+    #shadows .shadow--3 {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    }
+
+    #shadows .shadow--4 {
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    }
+
+    #shadows .shadow--5 {
+      box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    }
+
     /*Typography*/
     #typography h1,
     #typography h2,
@@ -117,12 +153,6 @@
       height: 16px;
       border: 1px solid black;
       margin: 0 0 24px 0;
-    }
-
-    #table table,
-    #table th,
-    #table td {
-      border: 1px solid black;
     }
 
     #table table {
@@ -169,6 +199,13 @@
         </div>
         <div class="color--info">
         </div>
+      </section>
+      <section id="shadows">
+        <div class="shadow shadow--1"></div>
+        <div class="shadow shadow--2"></div>
+        <div class="shadow shadow--3"></div>
+        <div class="shadow shadow--4"></div>
+        <div class="shadow shadow--5"></div>
       </section>
       <section id="typography">
         <div>
@@ -270,8 +307,8 @@
           <div class="badges badges--danger">danger</div>
           <div class="badges badges--info">info</div>
         </div>
-        <div class="tooltip">
-          <h3>tooltip</h3>
+        <div class="callout">
+          <h3>callout</h3>
           <div class="tooltip tooltip--top">success</div>
           <div class="tooltip tooltip--right">warning</div>
           <div class="tooltip tooltip--bottom">danger</div>

@@ -1,49 +1,80 @@
 <script setup>
-import { onMounted, getCurrentInstance } from "vue";
+import { onMounted } from "vue";
 
 onMounted(() => {
-  //Generate a dynamic navigation base on all sections of the style guide
-  const navigation = document.getElementById("navigation");
-  const sections = Array.from(document.querySelectorAll("section"));
-  let li;
-  sections.forEach((item) => {
-    li = document.createElement("li");
-    li.innerHTML = `<a href="#${item.id}">${item.id}</a>`;
-    navigation.appendChild(li);
-  });
+    //Generate a dynamic navigation base on all sections of the style guide
+    const navigation = document.getElementById('navigation');
+    const sections = Array.from(document.querySelectorAll('section'));
 
-  //Generate dynamic title for all sections of the style guide
-  let h2;
-  sections.forEach((item) => {
-    h2 = document.createElement("h2");
-    h2.classList.add("uisg-title");
-    h2.innerHTML = `${item.id}`;
-    item.prepend(h2);
-  });
+    let li;
+    sections.forEach((item) => {
+      li = document.createElement("li");
+      li.innerHTML = `<a href="#${item.id}">${item.id}</a>`;
+      navigation.appendChild(li);
+    });
 
-  // Get RGB/HEX color value
-  const colors = Array.from(document.querySelectorAll("#colors > div"));
-  let p;
-  colors.forEach((item) => {
-    p = document.createElement("p");
-    p.innerHTML = `
-      $${item.className}
-    `;
-  });
-});
+    //Generate dynamic title for all sections of the style guide
+    let h2;
+    sections.forEach((item) => {
+      h2 = document.createElement("h2");
+      h2.classList.add('uisg--title--2');
+      h2.innerHTML = `${item.id}`;
+      item.prepend(h2);
+    });
 
 const colors = [
-  "primary",
-  "secondary",
-  "accent",
-  "heading",
-  "text",
-  "background",
-  "success",
-  "warning",
-  "danger",
-  "info",
+  {
+    "variable": "primary",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "secondary",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "accent",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "heading",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "text",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "background",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "success",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "warning",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "danger",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "info",
+    "hex": "",
+    "rgba": ""  
+  },
 ];
+
 const buttons = [
   "primary",
   "secondary",
@@ -53,17 +84,7 @@ const buttons = [
   "danger",
   "info",
 ];
-const spacing = [
-  "small",
-  "base",
-  "space1",
-  "space2",
-  "space3",
-  "space4",
-  "space5",
-  "space6",
-];
-const feedbacks = ["success", "warning", "danger", "info"];
+
 const icons = [
   {
     label: "bell",
@@ -102,23 +123,27 @@ const icons = [
 <template>
   <div id="uisg">
     <div id="main">
-      <h1>UI STYLE GUIDE VUE 3.0</h1>
+      <h1 class="uisg--title--1">UI STYLE GUIDE VUE 3</h1>
       <section id="colors">
         <div
           v-for="(color, index) in colors"
           :key="index"
-          :class="`color--${color}`"
-        ></div>
+          :class="`color bg--${color.variable}`"
+        >
+        <p>color variable: {{color.variable}}</p>
+        <p>color hex: {{color.hex}}</p>
+        <p>color rgba: {{color.rgba}}</p>
+        </div>
       </section>
       <section id="typography">
-        <div><h1>A level 1 heading</h1></div>
-        <div><h2>A level 2 heading</h2></div>
-        <div><h3>A level 3 heading</h3></div>
-        <div><h4>A level 4 heading</h4></div>
-        <div><h5>A level 5 heading</h5></div>
-        <div><h6>A level 6 heading</h6></div>
-        <div><p>A paragraph</p></div>
-        <div>
+        <div class="wrapper"><h1 class="text-7">A level 1 heading</h1></div>
+        <div class="wrapper"><h2 class="text-6">A level 2 heading</h2></div>
+        <div class="wrapper"><h3 class="text-5">A level 3 heading</h3></div>
+        <div class="wrapper"><h4 class="text-4">A level 4 heading</h4></div>
+        <div class="wrapper"><h5 class="text-3">A level 5 heading</h5></div>
+        <div class="wrapper"><h6 class="text-2">A level 6 heading</h6></div>
+        <div class="wrapper"><p class="text-1">A paragraph</p></div>
+        <div class="wrapper">
           <ul>
             <li>unordered list item</li>
             <li>unordered list item</li>
@@ -132,84 +157,22 @@ const icons = [
         </div>
       </section>
       <section id="buttons">
-        <div v-for="(button, index) in buttons">
+        <div v-for="(button, index) in buttons" class="wrapper">
           <button :key="index" :class="`button button--${button}`">
             button {{ button }}
           </button>
         </div>
       </section>
-      <section id="spacings">
-        <div>
-          <div v-for="(space, index) in spacing" :key="index">
-            <p>space {{ space }}</p>
-            <div :class="`space space--${space}`"></div>
+      <section id="spacing">
+        <div class="wrapper">
+          <div v-for="(space, index) in 6" :key="index">
+            <p>space level {{ space }}</p>
+            <div :class="`space w-${index} bg-primary`"></div>
           </div>
-        </div>
-      </section>
-      <section id="feedback">
-        <div class="toast">
-          <h3>Toast</h3>
-          <div
-            v-for="(feedback, index) in feedbacks"
-            :key="index"
-            :class="`toast toast--${feedback}`"
-          >
-            {{ feedback }}
-          </div>
-        </div>
-        <div class="notification">
-          <h3>notification</h3>
-          <div
-            v-for="(feedback, index) in feedbacks"
-            :key="index"
-            :class="`notifications notifications--${feedback}`"
-          >
-            {{ feedback }}
-          </div>
-        </div>
-        <div class="badges">
-          <h3>badges</h3>
-          <div
-            v-for="(feedback, index) in feedbacks"
-            :key="index"
-            :class="`badges badges--${feedback}`"
-          >
-            {{ feedback }}
-          </div>
-        </div>
-      </section>
-      <section id="table">
-        <div>
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Job</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td data-label="Name">James</td>
-                <td data-label="Age">24</td>
-                <td data-label="Job">Engineer</td>
-              </tr>
-              <tr>
-                <td data-label="Name">Jill</td>
-                <td data-label="Age">26</td>
-                <td data-label="Job">Engineer</td>
-              </tr>
-              <tr>
-                <td data-label="Name">Elyse</td>
-                <td data-label="Age">24</td>
-                <td data-label="Job">Designer</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </section>
       <section id="icons">
-        <div v-for="(icon, index) in icons" :key="index">
+        <div v-for="(icon, index) in icons" :key="index" class="wrapper">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -236,7 +199,7 @@ const icons = [
     </div>
 
     <div id="sidebar">
-      <h2>Navigation</h2>
+      <h2 class="uisg--title--2">Navigation</h2>
       <ul id="navigation"></ul>
     </div>
   </div>
@@ -244,136 +207,141 @@ const icons = [
 
 <style>
 #uisg {
-  font-family: Helvetica, Arial, sans-serif;
-  max-width: 1280px;
-  margin: 32px auto 0 0;
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "sidebar main"
-    "sidebar main";
-}
+      font-family: Helvetica, Arial, sans-serif;
+      max-width: 1280px;
+      margin: 32px auto 0 0;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      grid-template-rows: auto;
+      grid-template-areas:
+        "sidebar main"
+        "sidebar main";
+    }
 
-#uisg #main {
-  grid-area: main;
-  padding: 0 24px;
-}
+    #uisg #main {
+      grid-area: main;
+      padding: 0 24px;
+    }
 
-#uisg #main > section {
-  margin-bottom: 64px;
-}
+    #uisg #main > section {
+      margin-bottom: 64px;
+    }
 
-#uisg #main section > h2.uisg-title {
-  width: 100%;
-  text-transform: uppercase;
-  font-size: 24px;
-  padding: 24px 0 0 0;
-  margin: 0 0 24px 0;
-  line-height: 1;
-  width: 100%;
-  display: block;
-}
+    #uisg #main > .uisg--title--1 {
+      width: 100%;
+      text-transform: uppercase;
+      font-size: 48px;
+      padding: 24px 0 0 0;
+      margin: 0 0 24px 0;
+      line-height: 1;
+      width: 100%;
+      display: block;
+    }
 
-#uisg #sidebar {
-  position: fixed;
-  grid-area: sidebar;
-  padding: 0 24px;
-}
+    #uisg #main section > .uisg--title--2,
+    #uisg #sidebar > .uisg--title--2 {
+      width: 100%;
+      text-transform: uppercase;
+      font-size: 24px;
+      padding: 24px 0 0 0;
+      margin: 0 0 24px 0;
+      line-height: 1;
+      width: 100%;
+      display: block;
+    }
 
-#uisg #sidebar ul {
-  list-style: none;
-  padding-left: 0;
-}
+    #uisg #sidebar {
+      position: fixed;
+      grid-area: sidebar;
+      padding: 0 24px;
+    }
 
-#uisg #sidebar ul li {
-  font-size: 1.25rem;
-  padding: 4px 0;
-}
+    #uisg #sidebar ul {
+      list-style: none;
+      padding-left: 0;
+    }
 
-#uisg #sidebar a {
-  color: #1f1f1f;
-  text-decoration: none;
-  text-transform: capitalize;
-}
+    #uisg #sidebar ul li {
+      font-size: 1.25rem;
+      padding: 4px 0;
+    }
 
-#uisg #sidebar a:hover {
-  text-decoration: underline;
-}
+    #uisg #sidebar a {
+      color: #1f1f1f;
+      text-decoration: none;
+      text-transform: capitalize;
+    }
 
-/*Colors*/
-#uisg #colors {
-  display: flex;
-  flex-wrap: wrap;
-}
+    #uisg #sidebar a:hover {
+      text-decoration: underline;
+    }
 
-#uisg #colors > div {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #1f1f1f;
-  height: 240px;
-  width: 200px;
-  margin: 16px;
-}
+    /*Colors*/
+    #uisg #colors {
+      display: flex;
+      flex-wrap: wrap;
+    }
 
-#uisg #colors > div > p {
-  background: #ffffff;
-  margin: auto 0 0;
-  padding: 8px;
-  line-height: 1.3;
-}
+    #uisg #colors > div {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #1f1f1f;
+      height: 240px;
+      width: 200px;
+      margin-right: 16px;
+      margin-bottom: 16px;
+    }
 
-#uisg #colors > div > p > span {
-  text-transform: uppercase;
-}
+    #uisg #colors > div > p {
+      background: #ffffff;
+      margin:0;
+      padding: 4px 16px;
+      line-height: 1;
+    }
 
-/*Typography*/
-#uisg #typography h1,
-#uisg #typography h2,
-#uisg #typography h3,
-#uisg #typography h4,
-#uisg #typography h5,
-#uisg #typography h6 {
-  position: relative;
-}
+    #uisg #colors > div > p:nth-child(1) {
+      margin-top: auto;
+      padding-top: 8px;
+    }
 
-#uisg #typography div {
-  border-bottom: 1px dotted;
-}
+    #uisg #colors > div > p > span {
+      text-transform: uppercase;
+    }
 
-#uisg #buttons > div {
-  margin-bottom: 32px;
-}
+    /*Typography*/
+    #uisg #typography h1,
+    #uisg #typography h2,
+    #uisg #typography h3,
+    #uisg #typography h4,
+    #uisg #typography h5,
+    #uisg #typography h6 {
+      position: relative;
+    }
 
-#uisg #spacings p {
-  margin: 0 0 4px 0;
-  line-height: 1;
-}
+    #uisg #typography div {
+      border-bottom: 1px dotted;
+    }
 
-#uisg #spacings .space {
-  height: 16px;
-  border: 1px solid black;
-  margin: 0 0 24px 0;
-}
+    #uisg #buttons > div {
+      margin-bottom: 32px;
+    }
 
-#uisg #table table,
-#uisg #table th,
-#uisg #table td {
-  border: 1px solid black;
-}
+    #uisg #spacing p {
+      margin: 0 0 4px 0;
+      line-height: 1;
+    }
 
-#uisg #table table {
-  width: 100%;
-}
+    #uisg #spacing .space {
+      height: 16px;
+      border: 1px solid black;
+      margin: 0 0 24px 0;
+    }
 
-#uisg #icons {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-#uisg #icons > div {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 16px;
-}
+    #uisg #icons  {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    #uisg #icons > div {
+      margin-right: 16px;
+    }
 </style>

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,16 +17,28 @@
         "sidebar main";
     }
 
-    #main {
+    #uisg #main {
       grid-area: main;
       padding: 0 24px;
     }
 
-    #main>section {
+    #uisg #main > section {
       margin-bottom: 64px;
     }
 
-    #main section>h2.uisg-title {
+    #uisg #main > .uisg--title--1 {
+      width: 100%;
+      text-transform: uppercase;
+      font-size: 48px;
+      padding: 24px 0 0 0;
+      margin: 0 0 24px 0;
+      line-height: 1;
+      width: 100%;
+      display: block;
+    }
+
+    #uisg #main section > .uisg--title--2,
+    #uisg #sidebar > .uisg--title--2 {
       width: 100%;
       text-transform: uppercase;
       font-size: 24px;
@@ -38,138 +49,99 @@
       display: block;
     }
 
-    #sidebar {
+    #uisg #sidebar {
       position: fixed;
       grid-area: sidebar;
       padding: 0 24px;
     }
 
-    #sidebar ul {
+    #uisg #sidebar ul {
       list-style: none;
       padding-left: 0;
     }
 
-    #sidebar ul li {
+    #uisg #sidebar ul li {
       font-size: 1.25rem;
       padding: 4px 0;
     }
 
-    #sidebar a {
+    #uisg #sidebar a {
       color: #1f1f1f;
       text-decoration: none;
       text-transform: capitalize;
     }
 
-    #sidebar a:hover {
+    #uisg #sidebar a:hover {
       text-decoration: underline;
     }
 
     /*Colors*/
-    #colors {
+    #uisg #colors {
       display: flex;
       flex-wrap: wrap;
     }
 
-    #colors>div {
+    #uisg #colors > div {
       display: flex;
       flex-direction: column;
       border: 1px solid #1f1f1f;
       height: 240px;
       width: 200px;
-      margin: 16px;
+      margin-right: 16px;
+      margin-bottom: 16px;
     }
 
-    #colors>div>p {
+    #uisg #colors > div > p {
       background: #ffffff;
-      margin: auto 0 0;
-      padding: 8px;
-      line-height: 1.3;
+      margin:0;
+      padding: 4px 16px;
+      line-height: 1;
     }
 
-    #colors>div>p>span {
+    #uisg #colors > div > p:nth-child(1) {
+      margin-top: auto;
+      padding-top: 8px;
+    }
+
+    #uisg #colors > div > p > span {
       text-transform: uppercase;
     }
 
-    #shadows {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    #shadows h2 {
-      width: 100%;
-    }
-
-    #shadows > div {
-      height: 200px;
-      width: 200px;
-      margin: 32px;
-      border: 1px solid grey;
-    }
-
-    #shadows .shadow--1 {
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    }
-
-    #shadows .shadow--2 {
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    }
-
-    #shadows .shadow--3 {
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    }
-
-    #shadows .shadow--4 {
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    }
-
-    #shadows .shadow--5 {
-      box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
-    }
-
     /*Typography*/
-    #typography h1,
-    #typography h2,
-    #typography h3,
-    #typography h4,
-    #typography h5,
-    #typography h6 {
+    #uisg #typography h1,
+    #uisg #typography h2,
+    #uisg #typography h3,
+    #uisg #typography h4,
+    #uisg #typography h5,
+    #uisg #typography h6 {
       position: relative;
     }
 
-    #typography div {
+    #uisg #typography div {
       border-bottom: 1px dotted;
     }
 
-    #buttons>div {
+    #uisg #buttons > div {
       margin-bottom: 32px;
     }
 
-    #spacings p {
+    #uisg #spacing p {
       margin: 0 0 4px 0;
       line-height: 1;
     }
 
-    #spacings .space {
+    #uisg #spacing .space {
       height: 16px;
       border: 1px solid black;
       margin: 0 0 24px 0;
     }
 
-    #table table {
-      width: 100%;
-    }
-
-    #form>div {
-      margin-bottom: 32px;
-    }
-
-    #icons {
+    #uisg #icons  {
       display: flex;
       flex-wrap: wrap;
     }
-
-    #icons>div {
-      margin: 16px;
+    #uisg #icons > div {
+      margin-right: 16px;
     }
   </style>
 </head>
@@ -177,211 +149,138 @@
 <body>
   <div id="uisg">
     <div id="main">
-      <h1>UI STYLE GUIDE VANILLA</h1>
+      <h1 class="uisg--title--1">UI STYLE GUIDE VANILLA</h1>
       <section id="colors">
-        <div class="color--primary">
+        <div class="color bg-primary">
+          <p>color variable</p>
+          <p>color hex</p>
+          <p>color rgba</p>
         </div>
-        <div class="color--secondary">
+        <div class="color bg-secondary">
+          <p>color variable</p>
+          <p>color hex</p>
+          <p>color rgba</p>
         </div>
-        <div class="color--accent">
+        <div class="color bg-accent">
+          <p>color variable</p>
+          <p>color hex</p>
+          <p>color rgba</p>
         </div>
-        <div class="color--heading">
+        <div class="color bg-heading">
+          <p>color variable</p>
+          <p>color hex</p>
+          <p>color rgba</p>
         </div>
-        <div class="color--text">
+        <div class="color bg-text">
+          <p>color variable</p>
+          <p>color hex</p>
+          <p>color rgba</p>
         </div>
-        <div class="color--background">
+        <div class="color bg-background">
+          <p>color variable</p>
+          <p>color hex</p>
+          <p>color rgba</p>
         </div>
-        <div class="color--success">
+        <div class="color bg-success">
+          <p>color variable</p>
+          <p>color hex</p>
+          <p>color rgba</p>
         </div>
-        <div class="color--warning">
+        <div class="color bg-warning">
+          <p>color variable</p>
+          <p>color hex</p>
+          <p>color rgba</p>
         </div>
-        <div class="color--danger">
+        <div class="color bg-danger">
+          <p>color variable</p>
+          <p>color hex</p>
+          <p>color rgba</p>
         </div>
-        <div class="color--info">
+        <div class="color bg-info">
+          <p>color variable</p>
+          <p>color hex</p>
+          <p>color rgba</p>
         </div>
-      </section>
-      <section id="shadows">
-        <div class="shadow shadow--1"></div>
-        <div class="shadow shadow--2"></div>
-        <div class="shadow shadow--3"></div>
-        <div class="shadow shadow--4"></div>
-        <div class="shadow shadow--5"></div>
       </section>
       <section id="typography">
-        <div>
-          <h1>A level 1 heading</h1>
+        <div class="wrapper">
+          <h1 class="text-7">Heading 1</h1>
         </div>
-        <div>
-          <h2>A level 2 heading</h2>
+        <div class="wrapper">
+          <h2 class="text-6">Heading 2</h2>
         </div>
-        <div>
-          <h3>A level 3 heading</h3>
+        <div class="wrapper">
+          <h3 class="text-5">Heading 3</h3>
         </div>
-        <div>
-          <h4>A level 4 heading</h4>
+        <div class="wrapper">
+          <h4 class="text-4">Heading 4</h4>
         </div>
-        <div>
-          <h5>A level 5 heading</h5>
+        <div class="wrapper">
+          <h5 class="text-3">Heading 5</h5>
         </div>
-        <div>
-          <h6>A level 6 heading</h6>
+        <div class="wrapper">
+          <h6 class="text-2">Heading 6</h6>
         </div>
-        <div>
-          <p>A paragraph</p>
+        <div class="wrapper">
+          <p class="text-1">A paragraph: <br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores ea laboriosam magni eius, molestias a velit? Quidem ex, eum inventore quas numquam consectetur!</p>
         </div>
-        <div>
+        <div class="wrapper">
           <ul>
-            <li>unordered list item</li>
-            <li>unordered list item</li>
-            <li>unordered list item</li>
+            <li>Unordered list item</li>
+            <li>Unordered list item</li>
+            <li>Unordered list item</li>
           </ul>
-          <ol>
-            <li>ordered list item</li>
-            <li>ordered list item</li>
-            <li>ordered list item</li>
+          <ol class="wrapper">
+            <li>Ordered list item</li>
+            <li>Ordered list item</li>
+            <li>Ordered list item</li>
           </ol>
         </div>
       </section>
       <section id="buttons">
-        <div>
+        <div class="wrapper">
           <button class="button button--primary">button primary</button>
         </div>
-        <div>
+        <div class="wrapper">
           <button class="button button--secondary">button secondary</button>
         </div>
-        <div>
+        <div class="wrapper">
           <button class="button button--accent">button accent</button>
         </div>
-        <div>
+        <div class="wrapper">
           <button class="button button--success">button success</button>
         </div>
-        <div>
+        <div class="wrapper">
           <button class="button button--warning">button warning</button>
         </div>
-        <div>
+        <div class="wrapper">
           <button class="button button--danger">button danger</button>
         </div>
-        <div>
+        <div class="wrapper">
           <button class="button button--info">button info</button>
         </div>
       </section>
-      <section id="spacings">
-        <div>
-          <p>space small</p>
-          <div class="space space--small"></div>
-          <p>space base</p>
-          <div class="space space--base"></div>
+      <section id="spacing">
+        <div class="wrapper">
           <p>space level 1</p>
-          <div class="space space--1"></div>
+          <div class="space w-1"></div>
           <p>space level 2</p>
-          <div class="space space--2"></div>
+          <div class="space w-2"></div>
           <p>space level 3</p>
-          <div class="space space--3"></div>
+          <div class="space w-3"></div>
           <p>space level 4</p>
-          <div class="space space--4"></div>
+          <div class="space w-4"></div>
           <p>space level 5</p>
-          <div class="space space--5"></div>
+          <div class="space w-5"></div>
           <p>space level 6</p>
-          <div class="space space--6"></div>
-        </div>
-      </section>
-      <section id="feedback">
-        <div class="toast">
-          <h3>Toast</h3>
-          <div class="toast toast--success">success</div>
-          <div class="toast toast--warning">warning</div>
-          <div class="toast toast--danger">danger</div>
-          <div class="toast toast--info">info</div>
-        </div>
-        <div class="notification">
-          <h3>notification</h3>
-          <div class="notifications notifications--success">success</div>
-          <div class="notifications notifications--warning">warning</div>
-          <div class="notifications notifications--danger">danger</div>
-          <div class="notifications notifications--info">info</div>
-        </div>
-        <div class="badges">
-          <h3>badges</h3>
-          <div class="badges badges--success">success</div>
-          <div class="badges badges--warning">warning</div>
-          <div class="badges badges--danger">danger</div>
-          <div class="badges badges--info">info</div>
-        </div>
-        <div class="callout">
-          <h3>callout</h3>
-          <div class="tooltip tooltip--top">success</div>
-          <div class="tooltip tooltip--right">warning</div>
-          <div class="tooltip tooltip--bottom">danger</div>
-          <div class="tooltip tooltip--left">info</div>
-        </div>
-      </section>
-      <section id="table">
-        <div>
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Job</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td data-label="Name">James</td>
-                <td data-label="Age">24</td>
-                <td data-label="Job">Engineer</td>
-              </tr>
-              <tr>
-                <td data-label="Name">Jill</td>
-                <td data-label="Age">26</td>
-                <td data-label="Job">Engineer</td>
-              </tr>
-              <tr>
-                <td data-label="Name">Elyse</td>
-                <td data-label="Age">24</td>
-                <td data-label="Job">Designer</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-      <section id="form">
-        <div>
-          <label for="">Input Text</label> <br>
-          <input type="text" name="" id="">
-        </div>
-        <div>
-          <label for="">Radio Button</label> <br>
-          <input type="radio" name="choice1" id="">
-          <input type="radio" name="choice1" id="">
-        </div>
-        <div>
-          <label for="">Checkbox</label> <br>
-          <input type="checkbox" name="A" id="">
-          <input type="checkbox" name="B" id="">
-          <input type="checkbox" name="C" id="">
-        </div>
-        <div>
-          <label for="">Select</label> <br>
-          <select name="City" id="">
-            <option value="Milan">Milan</option>
-            <option value="Paris" selected>Paris</option>
-            <option value="New York">New York</option>
-            <option value="London">London</option>
-          </select>
-        </div>
-        <div>
-          <label for="">Text area</label> <br>
-          <textarea name="" id="" cols="30" rows="10"></textarea>
+          <div class="space w-6"></div>
         </div>
       </section>
       <section id="icons">
-
       </section>
     </div>
-
     <div id="sidebar">
-      <h2>Navigation</h2>
+      <h2 class="uisg--title--2">Navigation</h2>
       <ul id="navigation"></ul>
     </div>
   </div>
@@ -398,20 +297,12 @@
     //Generate dynamic title for all sections of the style guide
     sections.forEach((item) => {
       h2 = document.createElement("h2");
-      h2.classList.add('uisg-title')
+      h2.classList.add('uisg--title--2')
       h2.innerHTML = `${item.id}`
       item.prepend(h2)
     });
 
-    // Get color value
-    const colors = Array.from(document.querySelectorAll('#colors > div'));
-    colors.forEach((item) => {
-      p = document.createElement("p");
-      p.innerHTML = `
-        $${item.className}
-      `
-    });
-
+    // Store svg path and identifier
     const icons = [
       {
         label: "bell",
@@ -445,19 +336,16 @@
           "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z",
       },
     ];
+
+    // Generate all icons
     const iconContainer = document.getElementById('icons');
     let div;
     icons.forEach((item) => {
       console.log(item.label)
       div = document.createElement("div");
+      div.classList.add('wrapper')
       if (item.path2) {
-        div.innerHTML = ` <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            width="24px"
-          >
+        div.innerHTML = `
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -495,5 +383,4 @@
     })
   </script>
 </body>
-
 </html>

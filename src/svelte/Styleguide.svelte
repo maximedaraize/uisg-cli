@@ -3,8 +3,9 @@
   let loaded;
   onMount(async () => {
     //Generate a dynamic navigation base on all sections of the style guide
-    const navigation = document.getElementById("navigation");
-    const sections = Array.from(document.querySelectorAll("section"));
+    const navigation = document.getElementById('navigation');
+    const sections = Array.from(document.querySelectorAll('section'));
+
     let li;
     sections.forEach((item) => {
       li = document.createElement("li");
@@ -16,36 +17,67 @@
     let h2;
     sections.forEach((item) => {
       h2 = document.createElement("h2");
-      h2.classList.add("uisg-title");
+      h2.classList.add('uisg--title--2');
       h2.innerHTML = `${item.id}`;
       item.prepend(h2);
     });
 
-    // Get RGB/HEX color value
-    const colors = Array.from(document.querySelectorAll("#colors > div"));
-    let p;
-    colors.forEach((item) => {
-      p = document.createElement("p");
-      p.innerHTML = `
-        $${item.className}
-      `;
-    });
     //load css after dom element are generated
     loaded = await true;
   });
 
   const colors = [
-    "primary",
-    "secondary",
-    "accent",
-    "heading",
-    "text",
-    "background",
-    "success",
-    "warning",
-    "danger",
-    "info",
-  ];
+  {
+    "variable": "primary",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "secondary",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "accent",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "heading",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "text",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "background",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "success",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "warning",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "danger",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "info",
+    "hex": "",
+    "rgba": ""  
+  },
+];
   const buttons = [
     "primary",
     "secondary",
@@ -55,17 +87,6 @@
     "danger",
     "info",
   ];
-  const spacing = [
-    "small",
-    "base",
-    "space1",
-    "space2",
-    "space3",
-    "space4",
-    "space5",
-    "space6",
-  ];
-  const feedbacks = ["success", "warning", "danger", "info"];
   const icons = [
     {
       label: "bell",
@@ -103,21 +124,25 @@
 
 <div id="uisg">
   <div id="main">
-    <h1>UI STYLE GUIDE SVELTE</h1>
+    <h1 class="uisg--title--1">UI STYLE GUIDE SVELTE</h1>
     <section id="colors">
       {#each colors as color}
-        <div class={`color--${color}`} />
+        <div class={`color--${color}`}>
+          <p>color variable: {color.variable}</p>
+          <p>color hex: {color.hex}</p>
+          <p>color rgba: {color.rgba}</p>
+        </div>
       {/each}
     </section>
     <section id="typography">
-      <div><h1>A level 1 heading</h1></div>
-      <div><h2>A level 2 heading</h2></div>
-      <div><h3>A level 3 heading</h3></div>
-      <div><h4>A level 4 heading</h4></div>
-      <div><h5>A level 5 heading</h5></div>
-      <div><h6>A level 6 heading</h6></div>
-      <div><p>A paragraph</p></div>
-      <div>
+      <div class="wrapper"><h1 class="text-7">A level 1 heading</h1></div>
+      <div class="wrapper"><h2 class="text-6">A level 2 heading</h2></div>
+      <div class="wrapper"><h3 class="text-5">A level 3 heading</h3></div>
+      <div class="wrapper"><h4 class="text-4">A level 4 heading</h4></div>
+      <div class="wrapper"><h5 class="text-3">A level 5 heading</h5></div>
+      <div class="wrapper"><h6 class="text-2">A level 6 heading</h6></div>
+      <div class="wrapper"><p class="text-1">A paragraph</p></div>
+      <div class="wrapper">
         <ul>
           <li>unordered list item</li>
           <li>unordered list item</li>
@@ -132,77 +157,21 @@
     </section>
     <section id="buttons">
       {#each buttons as button}
-        <div>
+        <div class="wrapper">
           <button class={`button button--${button}`}>
             button {button}
           </button>
         </div>
       {/each}
     </section>
-    <section id="spacings">
+    <section id="spacing">
       <div>
-        {#each spacing as space}
-          <div>
-            <p>space {space}</p>
-            <div class={`space space--${space}`} />
+        {#each Array(6) as _, i}
+          <div class="wrapper">
+            <p>space {i + 1}</p>
+            <div class={`space w--${i + 1} bg-primary`} />
           </div>
         {/each}
-      </div>
-    </section>
-    <section id="feedback">
-      <div class="toast">
-        <h3>Toast</h3>
-        {#each feedbacks as feedback}
-          <div class={`toast toast--${feedback}`}>
-            {feedback}
-          </div>
-        {/each}
-      </div>
-      <div class="notification">
-        <h3>notification</h3>
-        {#each feedbacks as feedback}
-          <div class={`notifications notifications--${feedback}`}>
-            {feedback}
-          </div>
-        {/each}
-      </div>
-      <div class="badges">
-        <h3>badges</h3>
-        {#each feedbacks as feedback}
-          <div class={`badges badges--${feedback}`}>
-            {feedback}
-          </div>
-        {/each}
-      </div>
-    </section>
-    <section id="table">
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Age</th>
-              <th>Job</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td data-label="Name">James</td>
-              <td data-label="Age">24</td>
-              <td data-label="Job">Engineer</td>
-            </tr>
-            <tr>
-              <td data-label="Name">Jill</td>
-              <td data-label="Age">26</td>
-              <td data-label="Job">Engineer</td>
-            </tr>
-            <tr>
-              <td data-label="Name">Elyse</td>
-              <td data-label="Age">24</td>
-              <td data-label="Job">Designer</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </section>
     <section id="icons">
@@ -235,7 +204,7 @@
   </div>
 
   <div id="sidebar">
-    <h2>Navigation</h2>
+    <h2 uisg--title--2>Navigation</h2>
     <ul id="navigation" />
   </div>
 </div>
@@ -263,7 +232,19 @@
       margin-bottom: 64px;
     }
 
-    #uisg #main section h2.uisg-title {
+    #uisg #main > .uisg--title--1 {
+      width: 100%;
+      text-transform: uppercase;
+      font-size: 48px;
+      padding: 24px 0 0 0;
+      margin: 0 0 24px 0;
+      line-height: 1;
+      width: 100%;
+      display: block;
+    }
+
+    #uisg #main section > .uisg--title--2,
+    #uisg #sidebar > .uisg--title--2 {
       width: 100%;
       text-transform: uppercase;
       font-size: 24px;
@@ -312,14 +293,20 @@
       border: 1px solid #1f1f1f;
       height: 240px;
       width: 200px;
-      margin: 16px;
+      margin-right: 16px;
+      margin-bottom: 16px;
     }
 
     #uisg #colors > div > p {
       background: #ffffff;
-      margin: auto 0 0;
-      padding: 8px;
-      line-height: 1.3;
+      margin:0;
+      padding: 4px 16px;
+      line-height: 1;
+    }
+
+    #uisg #colors > div > p:nth-child(1) {
+      margin-top: auto;
+      padding-top: 8px;
     }
 
     #uisg #colors > div > p > span {
@@ -344,36 +331,23 @@
       margin-bottom: 32px;
     }
 
-    #uisg #spacings p {
+    #uisg #spacing p {
       margin: 0 0 4px 0;
       line-height: 1;
     }
 
-    #uisg #spacings .space {
+    #uisg #spacing .space {
       height: 16px;
       border: 1px solid black;
       margin: 0 0 24px 0;
     }
 
-    #uisg #table table,
-    #uisg #table th,
-    #uisg #table td {
-      border: 1px solid black;
-    }
-
-    #uisg #table table {
-      width: 100%;
-    }
-
-    #uisg #icons {
+    #uisg #icons  {
       display: flex;
       flex-wrap: wrap;
     }
-
     #uisg #icons > div {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 16px;
+      margin-right: 16px;
     }
   </style>
 {/if}

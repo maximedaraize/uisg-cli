@@ -1,6 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom";
-
 document.addEventListener("DOMContentLoaded", () => {
   //Generate a dynamic navigation base on all sections of the style guide
   const navigation = document.getElementById("navigation");
@@ -28,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let h2;
   sections.forEach((item) => {
     h2 = document.createElement("h2");
-    h2.classList.add("uisg-title");
+    h2.classList.add("uisg-title--2");
     h2.style.cssText = `
        width: 100%;
        text-transform: uppercase;
@@ -43,37 +40,58 @@ document.addEventListener("DOMContentLoaded", () => {
     item.prepend(h2);
   });
 
-  // Get RGB/HEX color value
-    const colors = Array.from(document.querySelectorAll("#colors > div"));
-    let p;
-    colors.forEach((item) => {
-      p = document.createElement("p");
-      p.style.cssText = `
-       background: #ffffff;
-       margin: auto 0 0;
-       padding: 8px;
-       line-height: 1.3;
-    `;
-
-      p.innerHTML = `
-        $${item.className}
-      `;
-    });
-   });
-
-
-const colors = [
-  "primary",
-  "secondary",
-  "accent",
-  "heading",
-  "text",
-  "background",
-  "success",
-  "warning",
-  "danger",
-  "info",
-];
+  const colors = [
+    {
+      "variable": "primary",
+      "hex": "",
+      "rgba": ""  
+    },
+    {
+      "variable": "secondary",
+      "hex": "",
+      "rgba": ""  
+    },
+    {
+      "variable": "accent",
+      "hex": "",
+      "rgba": ""  
+    },
+    {
+      "variable": "heading",
+      "hex": "",
+      "rgba": ""  
+    },
+    {
+      "variable": "text",
+      "hex": "",
+      "rgba": ""  
+    },
+    {
+      "variable": "background",
+      "hex": "",
+      "rgba": ""  
+    },
+    {
+      "variable": "success",
+      "hex": "",
+      "rgba": ""  
+    },
+    {
+      "variable": "warning",
+      "hex": "",
+      "rgba": ""  
+    },
+    {
+      "variable": "danger",
+      "hex": "",
+      "rgba": ""  
+    },
+    {
+      "variable": "info",
+      "hex": "",
+      "rgba": ""  
+    },
+  ];
 const buttons = [
   "primary",
   "secondary",
@@ -84,8 +102,6 @@ const buttons = [
   "info",
 ];
 const spacing = [
-  "small",
-  "base",
   "space1",
   "space2",
   "space3",
@@ -93,7 +109,6 @@ const spacing = [
   "space5",
   "space6",
 ];
-const feedbacks = ["success", "warning", "danger", "info"];
 const icons = [
   {
     label: "bell",
@@ -163,47 +178,69 @@ const colorDiv = {
   width: "200px",
   margin: "16px",
 };
+const h1Style = {
+  width: "100%",
+  textTransform: "uppercase",
+  fontSize: "48px",
+  padding: "24px 0 0 0",
+  margin: "0 0 24px 0",
+  lineHeight: "1",
+  width: "100%",
+  display: "block",
+};
+const colorPFirst = {
+  marginTop: "auto",
+  paddingTop: "8px",
+};
+const colorP = {
+  background: "#ffffff",
+  margin:"0",
+  padding: "4px 16px",
+  lineHeight: "1",
+};
 ReactDOM.render(
   <React.StrictMode>
     <div id="uisg" style={uisg}>
       <div id="main" style={main}>
-        <h1>UI STYLE GUIDE REACT</h1>
+      <h1 class="uisg--title--1" style={h1Style}>UI STYLE GUIDE REACT</h1>
         <section id="colors" style={(section, colorsContainer)}>
           {colors.map((color) => {
             return (
               <div
                 key={color}
-                className={`color color--${color}`}
+                className={`color color--${color.variable}`}
                 style={colorDiv}
               >
-                {color}
+                <p style={colorPFirst, colorP}>color variable: {color.variable}</p>
+                <p style={colorP}>color hex: {color.hex}</p>
+                <p style={colorP}>color rgba: {color.rgba}</p>
               </div>
             );
           })}
         </section>
         <section id="typography" style={section}>
-          <div style={{ borderBottom: "1px dotted" }}>
-            <h1>A level 1 heading</h1>
+          <div className="wrapper" style={{ borderBottom: "1px dotted" }}>
+            <h1 className="text-7">A level 1 heading</h1>
           </div>
-          <div style={{ borderBottom: "1px dotted" }}>
-            <h2>A level 2 heading</h2>
+          <div className="wrapper" style={{ borderBottom: "1px dotted" }}>
+            <h2 className="text-6">A level 2 heading</h2>
           </div>
-          <div style={{ borderBottom: "1px dotted" }}>
-            <h3>A level 3 heading</h3>
+          <div className="wrapper" style={{ borderBottom: "1px dotted" }}>
+            <h3 className="text-5">A level 3 heading</h3>
           </div>
-          <div style={{ borderBottom: "1px dotted" }}>
-            <h4>A level 4 heading</h4>
+          <div className="wrapper" style={{ borderBottom: "1px dotted" }}>
+            <h4 className="text-4">A level 4 heading</h4>
           </div>
-          <div style={{ borderBottom: "1px dotted" }}>
-            <h5>A level 5 heading</h5>
+          <div className="wrapper" style={{ borderBottom: "1px dotted" }}>
+            <h5 className="text-3">A level 5 heading</h5>
           </div>
-          <div style={{ borderBottom: "1px dotted" }}>
-            <h6>A level 6 heading</h6>
+          <div className="wrapper" style={{ borderBottom: "1px dotted" }}>
+            <h6 className="text-2">A level 6 heading</h6>
           </div>
-          <div style={{ borderBottom: "1px dotted" }}>
-            <p>A paragraph</p>
+          <div className="wrapper" style={{ borderBottom: "1px dotted" }}>
+            <p className="text-1">A paragraph</p>
           </div>
-          <div style={{ borderBottom: "1px dotted" }}>
+          <div className="wrapper" style={{ borderBottom: "1px dotted" }}>
             <ul>
               <li>unordered list item</li>
               <li>unordered list item</li>
@@ -217,7 +254,7 @@ ReactDOM.render(
           </div>
         </section>
         <section id="buttons" style={section}>
-          <div>
+          <div className="wrapper">
             {buttons.map((button) => {
               return (
                 <div>
@@ -235,15 +272,15 @@ ReactDOM.render(
         </section>
         <section id="spacings" style={section}>
           <div>
-            {spacing.map((space) => {
+          {spacing.map((space, index) => {
               return (
-                <div>
+                <div className="wrapper">
                   <p style={{ margin: "0 0 4px 0", lineHeight: "1" }}>
-                    space {space}
+                    space {index}
                   </p>
                   <div
                     key={space}
-                    className={`space space--${space}`}
+                    className={`space w--${index} bg-primary`}
                     style={{
                       height: "16px",
                       border: "1px solid black",
@@ -251,91 +288,8 @@ ReactDOM.render(
                     }}
                   />
                 </div>
-              );
-            })}
-          </div>
-        </section>
-        <section id="feedback" style={section}>
-          <div className="toast">
-            <h3>Toast</h3>
-            {feedbacks.map((feedback) => {
-              return (
-                <div key={feedback} className={`toast toast--${feedback}`}>
-                  {feedback}
-                </div>
-              );
-            })}
-          </div>
-          <div className="notification">
-            <h3>notification</h3>
-            {feedbacks.map((feedback) => {
-              return (
-                <div
-                  key={feedback}
-                  className={`notification notification--${feedback}`}
-                >
-                  {feedback}
-                </div>
-              );
-            })}
-          </div>
-          <div className="badges">
-            <h3>badges</h3>
-            {feedbacks.map((feedback) => {
-              return (
-                <div key={feedback} className={`badges badges--${feedback}`}>
-                  {feedback}
-                </div>
-              );
-            })}
-          </div>
-        </section>
-        <section id="table" style={section}>
-          <div>
-            <table style={{ border: "1px solid black", width: "100%" }}>
-              <thead>
-                <tr>
-                  <th style={{ border: "1px solid black" }}>Name</th>
-                  <th style={{ border: "1px solid black" }}>Age</th>
-                  <th style={{ border: "1px solid black" }}>Job</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td data-label="Name" style={{ border: "1px solid black" }}>
-                    James
-                  </td>
-                  <td data-label="Age" style={{ border: "1px solid black" }}>
-                    24
-                  </td>
-                  <td data-label="Job" style={{ border: "1px solid black" }}>
-                    Engineer
-                  </td>
-                </tr>
-                <tr>
-                  <td data-label="Name" style={{ border: "1px solid black" }}>
-                    Jill
-                  </td>
-                  <td data-label="Age" style={{ border: "1px solid black" }}>
-                    26
-                  </td>
-                  <td data-label="Job" style={{ border: "1px solid black" }}>
-                    Engineer
-                  </td>
-                </tr>
-                <tr>
-                  <td data-label="Name" style={{ border: "1px solid black" }}>
-                    Elyse
-                  </td>
-                  <td data-label="Age" style={{ border: "1px solid black" }}>
-                    24
-                  </td>
-                  <td data-label="Job" style={{ border: "1px solid black" }}>
-                    Designer
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          );
+        })}
           </div>
         </section>
         <section id="icons" style={section}>

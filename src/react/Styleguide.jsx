@@ -39,59 +39,60 @@ document.addEventListener("DOMContentLoaded", () => {
     h2.innerHTML = `${item.id}`;
     item.prepend(h2);
   });
+});
 
-  const colors = [
-    {
-      "variable": "primary",
-      "hex": "",
-      "rgba": ""  
-    },
-    {
-      "variable": "secondary",
-      "hex": "",
-      "rgba": ""  
-    },
-    {
-      "variable": "accent",
-      "hex": "",
-      "rgba": ""  
-    },
-    {
-      "variable": "heading",
-      "hex": "",
-      "rgba": ""  
-    },
-    {
-      "variable": "text",
-      "hex": "",
-      "rgba": ""  
-    },
-    {
-      "variable": "background",
-      "hex": "",
-      "rgba": ""  
-    },
-    {
-      "variable": "success",
-      "hex": "",
-      "rgba": ""  
-    },
-    {
-      "variable": "warning",
-      "hex": "",
-      "rgba": ""  
-    },
-    {
-      "variable": "danger",
-      "hex": "",
-      "rgba": ""  
-    },
-    {
-      "variable": "info",
-      "hex": "",
-      "rgba": ""  
-    },
-  ];
+const colors = [
+  {
+    "variable": "primary",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "secondary",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "accent",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "heading",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "text",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "background",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "success",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "warning",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "danger",
+    "hex": "",
+    "rgba": ""  
+  },
+  {
+    "variable": "info",
+    "hex": "",
+    "rgba": ""  
+  },
+];
 const buttons = [
   "primary",
   "secondary",
@@ -190,7 +191,9 @@ const h1Style = {
 };
 const colorPFirst = {
   marginTop: "auto",
-  paddingTop: "8px",
+  marginBottom: "0",
+  padding: "8px 16px",
+  background: "#ffffff",
 };
 const colorP = {
   background: "#ffffff",
@@ -198,20 +201,21 @@ const colorP = {
   padding: "4px 16px",
   lineHeight: "1",
 };
-ReactDOM.render(
-  <React.StrictMode>
+
+function Styleguide() {
+  return (
     <div id="uisg" style={uisg}>
       <div id="main" style={main}>
-      <h1 class="uisg--title--1" style={h1Style}>UI STYLE GUIDE REACT</h1>
+      <h1 className="uisg--title--1" style={h1Style}>UI STYLE GUIDE REACT</h1>
         <section id="colors" style={(section, colorsContainer)}>
-          {colors.map((color) => {
+          {colors.map((color, index) => {
             return (
               <div
-                key={color}
-                className={`color color--${color.variable}`}
+                key={index}
+                className={`color bg-${color.variable}`}
                 style={colorDiv}
               >
-                <p style={colorPFirst, colorP}>color variable: {color.variable}</p>
+                <p style={(colorPFirst)}>color variable: {color.variable}</p>
                 <p style={colorP}>color hex: {color.hex}</p>
                 <p style={colorP}>color rgba: {color.rgba}</p>
               </div>
@@ -255,11 +259,11 @@ ReactDOM.render(
         </section>
         <section id="buttons" style={section}>
           <div className="wrapper">
-            {buttons.map((button) => {
+            {buttons.map((button, index) => {
               return (
                 <div>
                   <button
-                    key={button}
+                    key={index}
                     className={`button button--${button}`}
                     style={{ marginBottom: "32px" }}
                   >
@@ -280,7 +284,7 @@ ReactDOM.render(
                   </p>
                   <div
                     key={space}
-                    className={`space w--${index} bg-primary`}
+                    className={`space w-${index} bg-primary`}
                     style={{
                       height: "16px",
                       border: "1px solid black",
@@ -330,7 +334,8 @@ ReactDOM.render(
         <ul id="navigation" style={{listStyle:"none", paddingLeft: "0"}}/>
       </div>
     </div>
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+  )
+}
+
+export default Styleguide
 

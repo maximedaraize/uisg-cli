@@ -21,7 +21,7 @@ onMounted(() => {
       h2.innerHTML = `${item.id}`;
       item.prepend(h2);
     });
-
+});
 const colors = [
   {
     "variable": "primary",
@@ -116,8 +116,9 @@ const icons = [
     label: "chat",
     path1:
       "M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z",
-  },
+  }
 ];
+
 </script>
 
 <template>
@@ -128,7 +129,7 @@ const icons = [
         <div
           v-for="(color, index) in colors"
           :key="index"
-          :class="`color bg--${color.variable}`"
+          :class="`color bg-${color.variable}`"
         >
         <p>color variable: {{color.variable}}</p>
         <p>color hex: {{color.hex}}</p>
@@ -230,7 +231,7 @@ const icons = [
     #uisg #main > .uisg--title--1 {
       width: 100%;
       text-transform: uppercase;
-      font-size: 48px;
+      font-size: 44px;
       padding: 24px 0 0 0;
       margin: 0 0 24px 0;
       line-height: 1;

@@ -62,11 +62,11 @@ function questions() {
         } else if (
           answer.styleguide_template == `${chalk.hex("#3FB27F")("vue")}`
         ) {
-          srcDir = path.join(__dirname, "react");
+          srcDir = path.join(__dirname, "vue");
         } else if (
           answer.styleguide_template == `${chalk.hex("#5ED3F3")("react")}`
         ) {
-          srcDir = path.join(__dirname, "vue");
+          srcDir = path.join(__dirname, "react");
         } else if (
           answer.styleguide_template == `${chalk.hex("#F83D00")("svelte")}`
         ) {

@@ -127,7 +127,7 @@
     <h1 class="uisg--title--1">UI STYLE GUIDE SVELTE</h1>
     <section id="colors">
       {#each colors as color}
-        <div class={`color--${color}`}>
+        <div class={`color bg-${color.variable}`}>
           <p>color variable: {color.variable}</p>
           <p>color hex: {color.hex}</p>
           <p>color rgba: {color.rgba}</p>
@@ -235,7 +235,7 @@
     #uisg #main > .uisg--title--1 {
       width: 100%;
       text-transform: uppercase;
-      font-size: 48px;
+      font-size: 44px;
       padding: 24px 0 0 0;
       margin: 0 0 24px 0;
       line-height: 1;

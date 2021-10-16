@@ -1,6 +1,6 @@
 # UI Style Guide CLI
 
-A new CLI to easily create style guide. Which templat you want to add to your project between `Html`, `Vue`, `React` and `Svelte`.
+🎨 CLI to easily generate style-guide for differents Front End Framework like Vue, React and Svelte.
 
 ## WIP
 
@@ -9,8 +9,6 @@ A new CLI to easily create style guide. Which templat you want to add to your pr
 ![npm version](https://img.shields.io/npm/v/uisg-cli)
 ![npm license](https://img.shields.io/npm/l/uisg-cli?color=%2321bab3)
 ![npm downloads](https://img.shields.io/npm/dt/uisg-cli)
-
-A quick and easy way to generate a styleguide skeleton in your project. Choose a template from popular framework like _vue_, **react**, **svelte** or simple **html** .
 
 <hr>
 

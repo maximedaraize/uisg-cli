@@ -9,6 +9,7 @@
 ![npm version](https://img.shields.io/npm/v/uisg-cli)
 ![npm license](https://img.shields.io/npm/l/uisg-cli?color=%2321bab3)
 ![npm downloads](https://img.shields.io/npm/dt/uisg-cli)
+![npm publish](https://img.shields.io/github/workflow/status/maximedaraize/uisg-cli/publish)
 
 <hr>
 
